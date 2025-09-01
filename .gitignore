@@ -1,0 +1,69 @@
+# Ignore Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignore virtual environment
+venv/
+env/
+.env
+
+# Ignore IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Ignore OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Ignore model cache files
+.cache/
+models/
+.transformers_cache/
+
+# Ignore temporary files
+*.tmp
+*.temp
+temp/
+tmp/
+
+# Ignore log files
+*.log
+logs/
+
+# Ignore uploaded files
+uploads/
+static/uploads/
+
+# Ignore data files that shouldn't be committed
+data/user_data/
+data/cache/
+
+# Ignore system files
+*.pid
+*.seed
+*.pid.lock
+
+# Ignore coverage reports
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+
+# Ignore pytest cache
+.pytest_cache/
+
+# Ignore jupyter notebook checkpoints
+.ipynb_checkpoints
+
+# Ignore package files
+*.egg-info/
+dist/
+build/
