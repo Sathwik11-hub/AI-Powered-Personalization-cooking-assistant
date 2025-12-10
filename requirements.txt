@@ -1,52 +1,21 @@
-# VERCEL-COMPATIBLE REQUIREMENTS (Updated: Dec 10, 2025)
-# Minimal dependencies for Vercel deployment (under 250MB limit)
-# 
-# ⚠️ IMPORTANT: This is for VERCEL deployment only!
-# For Streamlit Cloud with full ML features, use requirements-original-full.txt
-#
-# Current size: ~50MB (within Vercel's 250MB limit)
-
-# Core framework
 streamlit==1.28.1
-
-# Data processing
+gradio==3.50.2
 pandas==2.1.3
 numpy==1.24.3
-
-# Image processing
 pillow==10.1.0
-
-# HTTP requests
 requests==2.31.0
-
-# Visualization
+transformers==4.35.2
+torch==2.1.1
+torchvision==0.16.1
+scikit-learn==1.3.2
+matplotlib==3.8.2
+seaborn==0.13.0
 plotly==5.17.0
-
-# Utilities
-python-dotenv==1.0.0
-
-# ============================================================================
-# REMOVED FOR VERCEL (packages too large for 250MB serverless limit):
-# ============================================================================
-# ❌ torch==2.1.1                    (~1000MB - EXCEEDS LIMIT)
-# ❌ transformers==4.35.2            (~500MB - requires torch)
-# ❌ torchvision==0.16.1             (~100MB - requires torch)
-# ❌ sentence-transformers==2.2.2    (~300MB - requires torch)
-# ❌ scikit-learn==1.3.2             (~100MB - can add if needed)
-# ❌ speechrecognition==3.10.0       (not needed for web deployment)
-# ❌ pyttsx3==2.90                   (not needed for web deployment)
-# ❌ datasets==2.14.6                (~200MB - too large)
-# ❌ gradio==3.50.2                  (using streamlit only)
-# ❌ matplotlib==3.8.2               (not essential for demo)
-# ❌ seaborn==0.13.0                 (not essential for demo)
-# ❌ opencv-python-headless==4.8.1.78 (can be large)
-# ❌ openai==1.3.7                   (can add back if using API only)
-# ❌ python-speech-features==0.6     (not needed for web)
-# ❌ huggingface_hub==0.19.4         (not needed without models)
-#
-# ============================================================================
-# TO DEPLOY WITH FULL ML FEATURES:
-# ============================================================================
-# Use Streamlit Cloud (https://streamlit.io/cloud) - FREE and optimized for ML!
-# It supports ALL dependencies including PyTorch, Transformers, etc.
-# ============================================================================
+python-speech-features==0.6
+speechrecognition==3.10.0
+pyttsx3==2.90
+opencv-python-headless==4.8.1.78
+huggingface_hub==0.19.4
+sentence-transformers==2.2.2
+openai==1.3.7
+datasets==2.14.6
