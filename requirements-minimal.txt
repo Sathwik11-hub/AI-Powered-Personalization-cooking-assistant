@@ -1,0 +1,33 @@
+# Minimal requirements for Vercel deployment
+# Heavy ML packages removed to fit Vercel's 250MB limit
+
+# Core framework
+streamlit==1.28.1
+
+# Data processing
+pandas==2.1.3
+numpy==1.24.3
+
+# Image processing
+pillow==10.1.0
+
+# HTTP requests
+requests==2.31.0
+
+# Visualization
+plotly==5.17.0
+
+# Basic utilities
+python-dotenv==1.0.0
+
+# Note: Heavy packages removed for Vercel:
+# - transformers (too large)
+# - torch (>1GB)
+# - sentence-transformers (too large)
+# - speechrecognition (not needed for web deploy)
+# - pyttsx3 (not needed for web deploy)
+# 
+# For full ML features, deploy to:
+# - Streamlit Cloud
+# - Hugging Face Spaces
+# - Railway or Render

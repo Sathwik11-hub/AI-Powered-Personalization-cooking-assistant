@@ -1,0 +1,55 @@
+# Optimized requirements for Vercel deployment
+# Lighter versions of packages to fit within Vercel's serverless constraints
+
+# Core web framework
+streamlit==1.28.1
+
+# Gradio removed - use Streamlit only for Vercel
+# gradio==3.50.2
+
+# Data processing (keep minimal versions)
+pandas==2.1.3
+numpy==1.24.3
+
+# Image processing
+pillow==10.1.0
+
+# HTTP requests
+requests==2.31.0
+
+# Transformers without PyTorch (use CPU-only or smaller models)
+# Full torch is too large for Vercel serverless (>1GB)
+# Remove these heavy packages:
+# transformers==4.35.2
+# torch==2.1.1
+# torchvision==0.16.1
+# sentence-transformers==2.2.2
+
+# ML alternatives for Vercel (lighter)
+scikit-learn==1.3.2
+
+# Visualization
+matplotlib==3.8.2
+seaborn==0.13.0
+plotly==5.17.0
+
+# Audio processing (lighter versions)
+# Remove heavy audio packages for Vercel:
+# python-speech-features==0.6
+# speechrecognition==3.10.0
+# pyttsx3==2.90
+
+# Computer vision (headless version for serverless)
+opencv-python-headless==4.8.1.78
+
+# Hugging Face (basic hub access only)
+huggingface_hub==0.19.4
+
+# OpenAI API (lightweight)
+openai==1.3.7
+
+# Datasets (can be heavy - only if absolutely needed)
+# datasets==2.14.6
+
+# Additional lightweight alternatives
+python-dotenv==1.0.0

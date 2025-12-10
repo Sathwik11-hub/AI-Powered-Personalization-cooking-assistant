@@ -1,0 +1,60 @@
+# .vercelignore - Exclude unnecessary files from deployment
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Documentation (not needed for runtime)
+*.md
+!README.md
+LICENSE
+
+# Local data files
+*.csv
+*.json
+!package.json
+!vercel.json
+
+# Models and large files
+*.pt
+*.pth
+*.h5
+*.pkl
+*.model
+
+# Logs
+*.log
+logs/
+
+# Development files
+.env.local
+.env.development
