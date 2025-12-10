@@ -539,10 +539,14 @@ def image_to_recipe_tab(recipes_df, models):
 
 def find_recipes_by_description(recipes_df, description, models):
     """Find recipes that match the image description"""
-    if not models or 'sentence_model' not in models:
+    if not ML_AVAILABLE or not models or 'sentence_model' not in models:
+        # ML not available - return random popular recipes
         return recipes_df.head(3)
     
     try:
+        # Only use ML features if available
+        from sklearn.metrics.pairwise import cosine_similarity
+        
         # Create embeddings for the description
         desc_embedding = models['sentence_model'].encode([description])
         
@@ -560,7 +564,7 @@ def find_recipes_by_description(recipes_df, description, models):
         return recipes_with_scores.sort_values('similarity', ascending=False)
     
     except Exception as e:
-        st.error(f"Error in similarity calculation: {e}")
+        # If any error occurs, fall back to simple recipe list
         return recipes_df.head(3)
 
 def substitution_tab(substitutions):
