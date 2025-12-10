@@ -1,0 +1,24 @@
+{
+  "name": "ai-powered-cooking-assistant",
+  "version": "1.0.0",
+  "description": "AI-Powered Personalization Cooking Assistant - Streamlit App",
+  "scripts": {
+    "dev": "streamlit run app.py",
+    "build": "python -m py_compile app.py && python scripts/verify-build-output.py",
+    "verify": "python scripts/verify-build-output.py",
+    "deploy": "vercel --prod --confirm",
+    "deploy-preview": "vercel"
+  },
+  "keywords": [
+    "ai",
+    "cooking",
+    "streamlit",
+    "personalization"
+  ],
+  "author": "Sathwik",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.x"
+  },
+  "devDependencies": {}
+}
