@@ -7,14 +7,30 @@ import os
 from datetime import datetime
 import plotly.express as px
 import plotly.graph_objects as go
-from transformers import pipeline, BlipProcessor, BlipForConditionalGeneration
-import torch
-from sentence_transformers import SentenceTransformer
-from sklearn.metrics.pairwise import cosine_similarity
-import speech_recognition as sr
-import pyttsx3
 import io
 import base64
+
+# Try to import ML libraries (they may not be available on Vercel)
+ML_AVAILABLE = False
+try:
+    from transformers import pipeline, BlipProcessor, BlipForConditionalGeneration
+    import torch
+    from sentence_transformers import SentenceTransformer
+    from sklearn.metrics.pairwise import cosine_similarity
+    ML_AVAILABLE = True
+except ImportError:
+    # ML libraries not available - running in lite mode
+    pass
+
+# Try to import voice libraries
+VOICE_AVAILABLE = False
+try:
+    import speech_recognition as sr
+    import pyttsx3
+    VOICE_AVAILABLE = True
+except ImportError:
+    # Voice libraries not available
+    pass
 
 # Page configuration
 st.set_page_config(
@@ -82,6 +98,9 @@ def init_session_state():
 @st.cache_resource
 def load_models():
     """Load AI models for various features"""
+    if not ML_AVAILABLE:
+        return None
+    
     try:
         # Image captioning model for ingredient recognition
         image_processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-base")
@@ -265,6 +284,25 @@ def load_recipe_data():
 def main():
     load_css()
     init_session_state()
+    
+    # Display deployment mode warning if ML is not available
+    if not ML_AVAILABLE:
+        st.warning("""
+        ⚠️ **Lite Mode Active** - This version is running without ML/AI features due to deployment constraints.
+        
+        **Available features:**
+        - ✅ Recipe browsing and search
+        - ✅ Nutrition information
+        - ✅ User preferences
+        - ✅ Cooking tips
+        
+        **Disabled features:**
+        - ❌ AI image recognition
+        - ❌ Smart recipe recommendations  
+        - ❌ NLP-powered search
+        
+        💡 **For full AI features**, deploy to [Streamlit Cloud](https://streamlit.io/cloud) - it's free and takes 2 minutes!
+        """)
     
     # Load data and models
     recipes_df, substitutions = load_recipe_data()

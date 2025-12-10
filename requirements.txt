@@ -1,21 +1,39 @@
+# VERCEL-COMPATIBLE REQUIREMENTS
+# Minimal dependencies for deployment (under 250MB limit)
+# For full ML version, see requirements-original-full.txt
+
+# Core framework
 streamlit==1.28.1
-gradio==3.50.2
+
+# Data processing
 pandas==2.1.3
 numpy==1.24.3
+
+# Image processing
 pillow==10.1.0
+
+# HTTP requests
 requests==2.31.0
-transformers==4.35.2
-torch==2.1.1
-torchvision==0.16.1
-scikit-learn==1.3.2
-matplotlib==3.8.2
-seaborn==0.13.0
+
+# Visualization
 plotly==5.17.0
-python-speech-features==0.6
-speechrecognition==3.10.0
-pyttsx3==2.90
-opencv-python-headless==4.8.1.78
-huggingface_hub==0.19.4
-sentence-transformers==2.2.2
-openai==1.3.7
-datasets==2.14.6
+
+# Utilities
+python-dotenv==1.0.0
+
+# REMOVED FOR VERCEL (too large):
+# - torch (>1GB) 
+# - transformers (requires torch)
+# - torchvision (requires torch)
+# - sentence-transformers (requires torch)
+# - speechrecognition (not needed for web)
+# - pyttsx3 (not needed for web)
+# - datasets (too large)
+# - gradio (using streamlit only)
+# - matplotlib (not essential)
+# - seaborn (not essential)
+# - opencv-python-headless (can be large)
+# - scikit-learn (can add back if needed, ~100MB)
+
+# NOTE: This creates a lightweight demo version
+# For full AI features, deploy to Streamlit Cloud instead
