@@ -40,43 +40,55 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Load custom CSS
+# Load custom CSS and JS from frontend/static directory
+_BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 def load_css():
-    st.markdown("""
-    <style>
-    .main-header {
-        font-size: 3rem;
-        color: #FF6B6B;
-        text-align: center;
-        margin-bottom: 2rem;
-        font-weight: bold;
-    }
-    .feature-card {
-        background-color: #f0f2f6;
-        padding: 1rem;
-        border-radius: 10px;
-        margin: 0.5rem 0;
-        border-left: 4px solid #FF6B6B;
-    }
-    .recipe-card {
-        background-color: #ffffff;
-        padding: 1.5rem;
-        border-radius: 15px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        margin: 1rem 0;
-    }
-    .nutrition-metric {
-        text-align: center;
-        padding: 1rem;
-        background-color: #f8f9fa;
-        border-radius: 10px;
-        margin: 0.5rem;
-    }
-    .sidebar .sidebar-content {
-        background-color: #f8f9fa;
-    }
-    </style>
-    """, unsafe_allow_html=True)
+    css_path = os.path.join(_BASE_DIR, "frontend", "static", "css", "style.css")
+    if os.path.exists(css_path):
+        with open(css_path, "r") as f:
+            css = f.read()
+        st.markdown(f"<style>{css}</style>", unsafe_allow_html=True)
+    else:
+        st.markdown("""
+        <style>
+        .main-header {
+            font-size: 3rem;
+            color: #FF6B6B;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: bold;
+        }
+        .feature-card {
+            background-color: #f0f2f6;
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 0.5rem 0;
+            border-left: 4px solid #FF6B6B;
+        }
+        .recipe-card {
+            background-color: #ffffff;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin: 1rem 0;
+        }
+        .nutrition-metric {
+            text-align: center;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            margin: 0.5rem;
+        }
+        </style>
+        """, unsafe_allow_html=True)
+
+def load_js():
+    js_path = os.path.join(_BASE_DIR, "frontend", "static", "js", "cooking_assistant.js")
+    if os.path.exists(js_path):
+        with open(js_path, "r") as f:
+            js = f.read()
+        st.markdown(f"<script>{js}</script>", unsafe_allow_html=True)
 
 # Initialize session state
 def init_session_state():

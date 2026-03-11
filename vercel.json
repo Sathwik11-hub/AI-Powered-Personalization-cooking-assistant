@@ -2,20 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/index.py",
+      "src": "backend/api/index.py",
       "use": "@vercel/python"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "api/index.py"
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/"
+      "dest": "backend/api/index.py"
     }
   ],
   "env": {
@@ -25,7 +19,7 @@
     "STREAMLIT_BROWSER_GATHER_USAGE_STATS": "false"
   },
   "functions": {
-    "api/index.py": {
+    "backend/api/index.py": {
       "maxDuration": 60,
       "memory": 1024
     }
